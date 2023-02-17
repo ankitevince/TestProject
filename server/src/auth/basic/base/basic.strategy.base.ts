@@ -6,18 +6,17 @@ import { IAuthStrategy } from "../../IAuthStrategy";
 import { UserInfo } from "../../UserInfo";
 
 export class BasicStrategyBase
-  extends PassportStrategy(Strategy)
-  implements IAuthStrategy
-{
-  constructor(protected readonly authService: AuthService) {
-    super();
-  }
+	extends PassportStrategy(Strategy)
+	implements IAuthStrategy {
+	constructor(protected readonly authService: AuthService) {
+		super();
+	}
 
-  async validate(username: string, password: string): Promise<UserInfo> {
-    const user = await this.authService.validateUser(username, password);
-    if (!user) {
-      throw new UnauthorizedException();
-    }
-    return user;
-  }
+	async validate(username: string, password: string): Promise<UserInfo> {
+		const user = await this.authService.validateUser(username, password);
+		if (!user) {
+			throw new UnauthorizedException();
+		}
+		return user;
+	}
 }

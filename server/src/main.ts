@@ -26,7 +26,6 @@ async function main() {
   );
 
   const document = SwaggerModule.createDocument(app, swaggerDocumentOptions);
-
   /** check if there is Public decorator for each path (action) and its method (findMany / findOne) on each controller */
   Object.values((document as OpenAPIObject).paths).forEach((path: any) => {
     Object.values(path).forEach((method: any) => {
